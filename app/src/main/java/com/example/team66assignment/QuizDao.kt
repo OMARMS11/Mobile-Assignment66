@@ -9,8 +9,8 @@ interface QuizDao {
     @Insert
     suspend fun insertQuiz(quiz: Quiz)
 
-    @Query("SELECT * FROM quiz_table WHERE category = :category")
-    suspend fun getQuizByCategory(category: String): List<Quiz>
+    @Query("SELECT * FROM quiz_table WHERE category = :category ORDER BY RANDOM() LIMIT 1")
+    suspend fun getQuizByCategory(category: String): Quiz?
 
     @Query("select category from quiz_table")
     suspend fun getCategories(): List<String>

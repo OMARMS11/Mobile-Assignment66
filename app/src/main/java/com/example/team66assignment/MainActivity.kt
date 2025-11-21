@@ -39,24 +39,20 @@ class MainActivity : AppCompatActivity() {
             val questionText = question.text.toString()
             val answerText = answer.text.toString()
             val categoryText = category.text.toString()
-            if(questionText.isEmpty() || answerText.isEmpty()|| categoryText.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
-            }
-            else {
-                // Add the quiz to the database
-                lifecycleScope.launch(Dispatchers.IO) {
-                    val quiz =
-                        Quiz(question = questionText, answer = answerText, category = categoryText)
-                    db.quizDao().insertQuiz(quiz)
 
-                    withContext(Dispatchers.Main) {
-                        question.text.clear()
-                        answer.text.clear()
-                        category.text.clear()
-                        Toast.makeText(this@MainActivity, "Quiz added", Toast.LENGTH_SHORT).show()
-                    }
+            // Add the quiz to the database
+            lifecycleScope.launch(Dispatchers.IO) {
+                val quiz =
+                    Quiz(question = questionText, answer = answerText, category = categoryText)
+                db.quizDao().insertQuiz(quiz)
+                withContext(Dispatchers.Main) {
+                    question.text.clear()
+                    answer.text.clear()
+                    category.text.clear()
+                    Toast.makeText(this@MainActivity, "Quiz added", Toast.LENGTH_SHORT).show()
                 }
             }
+
 
     }
 
