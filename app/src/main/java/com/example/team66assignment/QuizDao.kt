@@ -12,6 +12,8 @@ interface QuizDao {
     @Query("SELECT * FROM quiz_table WHERE category = :category")
     suspend fun getQuizByCategory(category: String): List<Quiz>
 
+    @Query("select category from quiz_table")
+    suspend fun getCategories(): List<String>
 
 
 }
