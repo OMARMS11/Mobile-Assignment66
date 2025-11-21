@@ -1,5 +1,5 @@
-package com.example.team66assignment
 
+package com.example.team66assignment
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -54,7 +54,11 @@ class MainActivity : AppCompatActivity() {
             }
 
 
-    }
+        }
+        goToQuizButton.setOnClickListener {
+                val intent = Intent(this , MainActivity2::class.java)
+                startActivity(intent)
+        }
+        }
 
     }
-}
