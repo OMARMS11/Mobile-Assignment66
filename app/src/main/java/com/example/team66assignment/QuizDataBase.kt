@@ -13,7 +13,7 @@ abstract class QuizDataBase : RoomDatabase() {
         @Volatile
         private var INSTANCE: QuizDataBase? = null
 
-        private fun getInstance(context: Context): QuizDataBase {
+         fun getInstance(context: Context): QuizDataBase {
 
             synchronized(QuizDataBase::class){
                 INSTANCE = Room.databaseBuilder(
